@@ -119,9 +119,9 @@
                             <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3.5 rounded-full font-semibold shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/40 transition-all duration-300 transform hover:scale-[1.02] inline-flex items-center gap-2">
                                 Book a Free Demo <i class="fas fa-arrow-right text-sm"></i>
                             </a>
-                            <a href="#problems" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2">
-                                Learn More <i class="fas fa-chevron-down text-xs"></i>
-                            </a>
+                            <button onclick="openLightbox('CommunityHub-SalesDeck.mp4', 'CommunityHub Product Walkthrough & Sales Deck')" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2">
+                                Watch Demo Video <i class="fas fa-play text-emerald-400 text-xs"></i>
+                            </button>
                         </div>
                     </div>
                     
@@ -684,18 +684,21 @@
                 <!-- Need a custom solution -->
                 <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 max-w-2xl mx-auto space-y-2">
                     <h3 class="font-bold text-white text-base md:text-lg">Need a custom solution for your community?</h3>
-                    <p class="text-slate-400 text-xs md:text-sm">Contact the founder directly for a free consultation and product walkthrough.</p>
+                    <p class="text-slate-400 text-xs md:text-sm">Contact the founder directly for a free consultation and <button onclick="openLightbox('CommunityHub-SalesDeck.mp4', 'CommunityHub Product Walkthrough & Sales Deck')" class="text-teal-400 hover:text-teal-300 underline font-semibold transition-colors focus:outline-none">product walkthrough</button>.</p>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-4 pt-4">
-                    <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full text-base sm:text-lg font-bold shadow-xl shadow-emerald-950/20 transition-all duration-300 transform hover:scale-[1.03]">
+                    <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full text-base sm:text-lg font-bold shadow-xl shadow-emerald-950/20 transition-all duration-300 transform hover:scale-[1.03] inline-block">
                         Book a Free Demo <i class="fas fa-calendar-alt ml-2"></i>
                     </a>
-                    <a href="mailto:musabdigitalwork@gmail.com?subject=Inquiry%20About%20CommunityHub" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-[1.03]">
+                    <a href="mailto:musabdigitalwork@gmail.com?subject=Inquiry%20About%20CommunityHub" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-[1.03] inline-block">
                         Contact Founder <i class="fas fa-paper-plane ml-2"></i>
                     </a>
                 </div>
-                <div class="text-xs text-slate-500 flex items-center justify-center gap-2">
+                <button onclick="openLightbox('CommunityHub-SalesDeck.mp4', 'CommunityHub Product Walkthrough & Sales Deck')" class="text-slate-400 hover:text-emerald-400 text-xs font-semibold underline mt-2 flex items-center gap-1.5 mx-auto transition-colors focus:outline-none">
+                    <i class="fas fa-play text-[10px]"></i> Watch Video Walkthrough
+                </button>
+                <div class="text-xs text-slate-500 flex items-center justify-center gap-2 pt-2">
                     <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     Free Consultation • Direct Discovery Call with the Founder
                 </div>
@@ -842,29 +845,52 @@
 
     </main>
 
-    <!-- LIGHTBOX MODAL (To Zoom Screenshot Images) -->
+    <!-- LIGHTBOX MODAL (To Zoom Screenshot Images & Play Walkthrough Video) -->
     <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-slate-950/95 backdrop-blur-md flex-col items-center justify-center p-4 transition-all duration-300 opacity-0 cursor-pointer" onclick="closeLightbox()">
         <!-- Close Button -->
         <button class="absolute top-6 right-6 text-slate-400 hover:text-white transition bg-slate-900/80 border border-slate-800 hover:bg-slate-800 p-3.5 rounded-full text-xl leading-none shadow-lg" onclick="closeLightbox(); event.stopPropagation();">
             <i class="fas fa-times"></i>
         </button>
-        <!-- Lightbox Image Content -->
+        <!-- Lightbox Content Wrapper -->
         <div class="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center justify-center" onclick="event.stopPropagation();">
-            <img id="lightbox-img" src="" class="max-w-full max-h-[75vh] rounded-2xl shadow-2xl border border-slate-800 object-contain scale-95 transition-transform duration-300" alt="Full Screenshot Preview">
+            <!-- Image Element -->
+            <img id="lightbox-img" src="" class="hidden max-w-full max-h-[75vh] rounded-2xl shadow-2xl border border-slate-800 object-contain scale-95 transition-transform duration-300" alt="Full Screenshot Preview">
+            
+            <!-- Video Element -->
+            <video id="lightbox-video" src="" controls class="hidden max-w-full max-h-[75vh] rounded-2xl shadow-2xl border border-slate-800 object-contain scale-95 transition-transform duration-300"></video>
+            
             <!-- Caption -->
             <p id="lightbox-caption" class="text-slate-300 text-sm mt-4 text-center font-medium bg-slate-900/90 border border-slate-800 px-5 py-2.5 rounded-full shadow-lg max-w-lg"></p>
         </div>
     </div>
 
-    <!-- JavaScript Lightbox Functionality -->
+    <!-- JavaScript Lightbox & Video Player Functionality -->
     <script>
         function openLightbox(src, caption) {
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
+            const video = document.getElementById('lightbox-video');
             const captionText = document.getElementById('lightbox-caption');
             
-            img.src = src;
             captionText.textContent = caption || 'CommunityHub Detail Preview';
+            
+            const isVideo = src.toLowerCase().endsWith('.mp4');
+            let activeMedia = img;
+            
+            if (isVideo) {
+                img.classList.add('hidden');
+                video.classList.remove('hidden');
+                video.src = src;
+                video.load();
+                video.play();
+                activeMedia = video;
+            } else {
+                video.classList.add('hidden');
+                video.src = '';
+                img.classList.remove('hidden');
+                img.src = src;
+                activeMedia = img;
+            }
             
             lightbox.classList.remove('hidden');
             lightbox.classList.add('flex');
@@ -872,23 +898,32 @@
             // Smooth fade-in and scale-up transition
             setTimeout(() => {
                 lightbox.classList.remove('opacity-0');
-                img.classList.remove('scale-95');
-                img.classList.add('scale-100');
+                activeMedia.classList.remove('scale-95');
+                activeMedia.classList.add('scale-100');
             }, 20);
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
+            const video = document.getElementById('lightbox-video');
+            
+            // Pause video if playing
+            if (!video.paused) {
+                video.pause();
+            }
+            
+            const activeMedia = !video.classList.contains('hidden') ? video : img;
             
             lightbox.classList.add('opacity-0');
-            img.classList.remove('scale-100');
-            img.classList.add('scale-95');
+            activeMedia.classList.remove('scale-100');
+            activeMedia.classList.add('scale-95');
             
             // Re-hide after transition completes
             setTimeout(() => {
                 lightbox.classList.add('hidden');
                 lightbox.classList.remove('flex');
+                video.src = ''; // Clear source to prevent continuous background download
             }, 300);
         }
 
