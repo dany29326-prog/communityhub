@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CommunityHub — Modern Community Management Platform</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS & Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom Style & Animation -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Grid pattern background like Linear/Framer */
+        .bg-grid-pattern {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.25);
+            background: rgba(15, 23, 42, 0.6);
+        }
+        
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom image zoom hover */
+        .zoom-img-container img {
+            transition: transform 0.5s ease;
+        }
+        .zoom-img-container:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-200 antialiased overflow-x-hidden bg-grid-pattern">
+
+    <!-- NAVIGATION (Sticky & Semi-Transparent) -->
+    <nav class="sticky top-0 z-50 bg-[#030712]/80 backdrop-blur-md border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="h-9 w-9 bg-emerald-600 rounded-xl flex items-center justify-center shadow-md shadow-emerald-900/20">
+                    <i class="fas fa-users text-white text-sm"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight text-white">CommunityHub</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+                <a href="#problems" class="hover:text-emerald-400 transition">Problems</a>
+                <a href="#preview" class="hover:text-emerald-400 transition">See Product</a>
+                <a href="#admin" class="hover:text-emerald-400 transition">Admin Tools</a>
+                <a href="#desktop" class="hover:text-emerald-400 transition">Desktop View</a>
+                <a href="#use-cases" class="hover:text-emerald-400 transition">Use Cases</a>
+                <a href="#founder" class="hover:text-emerald-400 transition">Founder</a>
+                <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
+            </div>
+            <div>
+                <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-emerald-950/20 transition-all duration-300 transform hover:scale-[1.02] inline-block">Book a Free Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+        <!-- SECTION 1 — HERO SECTION -->
+        <section class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
+            <!-- Glow background effects -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -z-10 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                    
+                    <!-- Left: Hero Details -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase">
+                            <i class="fas fa-sparkles text-emerald-500"></i> Real, Working Community Platform
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
+                            Modern Community <br>
+                            <span class="bg-gradient-to-r from-emerald-400 via-emerald-500 to-teal-400 bg-clip-text text-transparent">Management Platform</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Manage residents, dues, requests, events, voting, and communication from one secure platform.
+                        </p>
+                        <p class="text-sm text-slate-500 max-w-md mx-auto lg:mx-0">
+                            Tailored for homeowners associations (HOAs), residential communities, condominiums, and membership organizations.
+                        </p>
+                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
+                            <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3.5 rounded-full font-semibold shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/40 transition-all duration-300 transform hover:scale-[1.02] inline-flex items-center gap-2">
+                                Book a Free Demo <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                            <a href="#problems" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-3.5 rounded-full font-semibold transition-all duration-300 inline-flex items-center gap-2">
+                                Learn More <i class="fas fa-chevron-down text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Premium Phone Mockup (dashboard-home1.jpeg) -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-[280px] sm:max-w-[310px] animate-float group">
+                            <!-- Background Glow Behind Phone -->
+                            <div class="absolute -inset-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                            
+                            <!-- Phone Frame -->
+                            <div class="relative border-slate-900 bg-slate-900 border-[10px] rounded-[2.5rem] shadow-2xl overflow-hidden aspect-[9/19] w-full">
+                                <!-- Camera notch/Island -->
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-4 bg-slate-900 rounded-b-xl z-20"></div>
+                                <!-- Content Screen -->
+                                <div class="w-full h-full bg-slate-950 overflow-hidden cursor-zoom-in relative">
+                                    <img src="dashboard-home1.jpeg" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500" alt="Resident Dashboard Home Screen" onclick="openLightbox(this.src, 'Resident Dashboard Home - Mobile View')">
+                                    <!-- Hover overlay indicator -->
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                                        <div class="bg-slate-900/95 border border-slate-800 px-4 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 text-white shadow-lg">
+                                            <i class="fas fa-search-plus text-emerald-400"></i> Click to Zoom
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1B — PROBLEMS WE SOLVE -->
+        <section id="problems" class="py-20 border-t border-slate-900 bg-slate-950/20 relative">
+            <div class="max-w-4xl mx-auto px-5 text-center">
+                <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+                    <div class="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                        The Challenge
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+                        Still Managing Your Community With?
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                    <div class="bg-red-500/5 border border-red-500/10 rounded-2xl p-5 flex flex-col items-center justify-center gap-3 transition hover:border-red-500/20 duration-300">
+                        <span class="text-2xl">❌</span>
+                        <span class="font-bold text-slate-300 text-sm md:text-base">Spreadsheets</span>
+                    </div>
+                    <div class="bg-red-500/5 border border-red-500/10 rounded-2xl p-5 flex flex-col items-center justify-center gap-3 transition hover:border-red-500/20 duration-300">
+                        <span class="text-2xl">❌</span>
+                        <span class="font-bold text-slate-300 text-sm md:text-base">Email Chains</span>
+                    </div>
+                    <div class="bg-red-500/5 border border-red-500/10 rounded-2xl p-5 flex flex-col items-center justify-center gap-3 transition hover:border-red-500/20 duration-300">
+                        <span class="text-2xl">❌</span>
+                        <span class="font-bold text-slate-300 text-sm md:text-base">Manual Requests</span>
+                    </div>
+                    <div class="bg-red-500/5 border border-red-500/10 rounded-2xl p-5 flex flex-col items-center justify-center gap-3 transition hover:border-red-500/20 duration-300">
+                        <span class="text-2xl">❌</span>
+                        <span class="font-bold text-slate-300 text-sm md:text-base">Paper-Based Voting</span>
+                    </div>
+                </div>
+                
+                <div class="mt-12 flex justify-center">
+                    <div class="inline-flex items-center gap-2.5 bg-emerald-500/10 border border-emerald-500/25 px-8 py-4 rounded-full text-emerald-400 font-bold text-base md:text-lg shadow-lg shadow-emerald-950/20 animate-pulse">
+                        <i class="fas fa-check-circle text-emerald-400 text-xl"></i>
+                        <span>CommunityHub Replaces All Of Them.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 — PLATFORM PREVIEW ("See CommunityHub In Action") -->
+        <section id="preview" class="py-20 border-t border-slate-900 bg-slate-950/30">
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        See CommunityHub In Action
+                    </h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        A real platform built for homeowners associations, residential communities, and membership organizations.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- CARD 1: Resident Dashboard -->
+                    <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-emerald-950/5 cursor-pointer flex flex-col h-full group" onclick="openLightbox('dashboard-home2.jpeg', 'Resident Dashboard - Mobile Updates & Events')">
+                        <div class="zoom-img-container relative aspect-[4/3] w-full overflow-hidden bg-slate-950 border-b border-slate-900">
+                            <img src="dashboard-home2.jpeg" class="w-full h-full object-cover object-top" alt="Resident Dashboard Screen">
+                            <div class="absolute top-3 right-3 bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fas fa-mobile-alt text-emerald-400"></i> Mobile
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Resident Dashboard</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Residents can access announcements, community updates, quick actions, and upcoming events from a modern mobile portal.
+                                </p>
+                            </div>
+                            <div class="text-emerald-400 text-xs font-semibold flex items-center gap-1 pt-4 group-hover:translate-x-1 transition-transform">
+                                Click to Enlarge <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2: Community Events -->
+                    <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-emerald-950/5 cursor-pointer flex flex-col h-full group" onclick="openLightbox('community-events.jpeg', 'Community Events - Meetings & Activities')">
+                        <div class="zoom-img-container relative aspect-[4/3] w-full overflow-hidden bg-slate-950 border-b border-slate-900">
+                            <img src="community-events.jpeg" class="w-full h-full object-cover object-top" alt="Community Events Screen">
+                            <div class="absolute top-3 right-3 bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fas fa-mobile-alt text-emerald-400"></i> Mobile
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Community Events</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Manage HOA meetings, community activities, cleanup programs, and resident engagement events.
+                                </p>
+                            </div>
+                            <div class="text-emerald-400 text-xs font-semibold flex items-center gap-1 pt-4 group-hover:translate-x-1 transition-transform">
+                                Click to Enlarge <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 3: Service Requests -->
+                    <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-emerald-950/5 cursor-pointer flex flex-col h-full group" onclick="openLightbox('service-requests.jpeg', 'Service Requests - Mobile Report System')">
+                        <div class="zoom-img-container relative aspect-[4/3] w-full overflow-hidden bg-slate-950 border-b border-slate-900">
+                            <img src="service-requests.jpeg" class="w-full h-full object-cover object-top" alt="Service Requests Screen">
+                            <div class="absolute top-3 right-3 bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fas fa-mobile-alt text-emerald-400"></i> Mobile
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Service Requests</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Residents can report maintenance issues and submit service requests online.
+                                </p>
+                            </div>
+                            <div class="text-emerald-400 text-xs font-semibold flex items-center gap-1 pt-4 group-hover:translate-x-1 transition-transform">
+                                Click to Enlarge <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 4: Community Voting -->
+                    <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-emerald-950/5 cursor-pointer flex flex-col h-full group" onclick="openLightbox('community-voting.jpeg', 'Community Voting - Secure Digital Polls')">
+                        <div class="zoom-img-container relative aspect-[4/3] w-full overflow-hidden bg-slate-950 border-b border-slate-900">
+                            <img src="community-voting.jpeg" class="w-full h-full object-cover object-top" alt="Community Voting Screen">
+                            <div class="absolute top-3 right-3 bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fas fa-mobile-alt text-emerald-400"></i> Mobile
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Community Voting</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Conduct digital voting and gather community feedback securely.
+                                </p>
+                            </div>
+                            <div class="text-emerald-400 text-xs font-semibold flex items-center gap-1 pt-4 group-hover:translate-x-1 transition-transform">
+                                Click to Enlarge <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 5: Member Directory -->
+                    <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-emerald-950/5 cursor-pointer flex flex-col h-full group" onclick="openLightbox('member-directory.jpeg', 'Member Directory - Resident Roster')">
+                        <div class="zoom-img-container relative aspect-[4/3] w-full overflow-hidden bg-slate-950 border-b border-slate-900">
+                            <img src="member-directory.jpeg" class="w-full h-full object-cover object-top" alt="Member Directory Screen">
+                            <div class="absolute top-3 right-3 bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fas fa-mobile-alt text-emerald-400"></i> Mobile
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Member Directory</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Maintain an organized directory of residents and households.
+                                </p>
+                            </div>
+                            <div class="text-emerald-400 text-xs font-semibold flex items-center gap-1 pt-4 group-hover:translate-x-1 transition-transform">
+                                Click to Enlarge <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CARD 6: Board Members -->
+                    <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-emerald-950/5 cursor-pointer flex flex-col h-full group" onclick="openLightbox('board-members.jpeg', 'Board Members - Leadership Roles')">
+                        <div class="zoom-img-container relative aspect-[4/3] w-full overflow-hidden bg-slate-950 border-b border-slate-900">
+                            <img src="board-members.jpeg" class="w-full h-full object-cover object-top" alt="Board Members Screen">
+                            <div class="absolute top-3 right-3 bg-slate-900/90 border border-slate-800 text-slate-300 text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                                <i class="fas fa-mobile-alt text-emerald-400"></i> Mobile
+                            </div>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div class="space-y-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">Board Members</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    Display leadership roles and improve board communication.
+                                </p>
+                            </div>
+                            <div class="text-emerald-400 text-xs font-semibold flex items-center gap-1 pt-4 group-hover:translate-x-1 transition-transform">
+                                Click to Enlarge <i class="fas fa-arrow-right text-[10px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 — ADMIN DASHBOARD ("Built for Community Leaders" - LARGER DISPLAY) -->
+        <section id="admin" class="py-24 border-t border-slate-900 bg-slate-900/20">
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                
+                <!-- Centered Text and Subtitle -->
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                        Administration Portal
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Built for Community Leaders
+                    </h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        Powerful operational tools built specifically for **HOA Boards**, **Community Managers**, and **Property Managers**.
+                    </p>
+                </div>
+                
+                <!-- Horizontal Benefits Checklist (5-column Layout) -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-5xl mx-auto mb-16">
+                    <div class="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-4 flex flex-col items-center text-center gap-3">
+                        <div class="h-8 w-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-semibold">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="font-bold text-white text-xs md:text-sm">Financial Tracking</span>
+                    </div>
+                    <div class="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-4 flex flex-col items-center text-center gap-3">
+                        <div class="h-8 w-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-semibold">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="font-bold text-white text-xs md:text-sm">Community Analytics</span>
+                    </div>
+                    <div class="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-4 flex flex-col items-center text-center gap-3">
+                        <div class="h-8 w-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-semibold">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="font-bold text-white text-xs md:text-sm">Resident Management</span>
+                    </div>
+                    <div class="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-4 flex flex-col items-center text-center gap-3">
+                        <div class="h-8 w-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-semibold">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="font-bold text-white text-xs md:text-sm">Request Monitoring</span>
+                    </div>
+                    <div class="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-4 flex flex-col items-center text-center gap-3">
+                        <div class="h-8 w-8 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-semibold">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="font-bold text-white text-xs md:text-sm">Participation Insights</span>
+                    </div>
+                </div>
+
+                <!-- HUGE Browser Frame showcasing admin-dashboard.jpeg -->
+                <div class="relative group cursor-zoom-in max-w-6xl mx-auto">
+                    <!-- Glow Behind Frame -->
+                    <div class="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-1000"></div>
+                    
+                    <!-- Browser Container -->
+                    <div class="relative bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+                        <!-- Browser Header -->
+                        <div class="bg-slate-900 px-4 py-3.5 border-b border-slate-800 flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <div class="w-3.5 h-3.5 rounded-full bg-slate-800"></div>
+                                <div class="w-3.5 h-3.5 rounded-full bg-slate-800"></div>
+                                <div class="w-3.5 h-3.5 rounded-full bg-slate-800"></div>
+                            </div>
+                            <div class="bg-slate-950 border border-slate-800 text-[10px] sm:text-xs text-slate-400 px-8 py-1 rounded-md w-1/2 text-center truncate select-none">
+                                admin.communityhub.app/dashboard/overview
+                            </div>
+                            <div class="w-10"></div>
+                        </div>
+                        <!-- Large Admin Dashboard Image -->
+                        <div class="bg-slate-950 aspect-[16/9.5] overflow-hidden">
+                            <img src="admin-dashboard.jpeg" class="w-full h-full object-cover object-top hover:scale-[1.01] transition-transform duration-700" alt="Admin Dashboard Overview" onclick="openLightbox(this.src, 'Admin Dashboard Panel - Full Operational Overview')">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4 — DESKTOP MANAGEMENT ("Powerful Desktop Management Tools") -->
+        <section id="desktop" class="py-20 border-t border-slate-900 bg-[#030712]">
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                        Advanced Desktop System
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Powerful Desktop Management Tools
+                    </h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        Manage requests, voting, finances, and community operations from a centralized administrative dashboard.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 md:gap-6 lg:gap-8 pt-6">
+                    
+                    <!-- LAPTOP 1: service-requests-desktop.jpeg -->
+                    <div class="space-y-4">
+                        <div class="relative group cursor-zoom-in">
+                            <!-- Laptop Frame Mockup -->
+                            <div class="relative border-slate-800 bg-slate-900 border-[8px] rounded-t-2xl shadow-xl overflow-hidden aspect-[16/10] w-full">
+                                <img src="service-requests-desktop.jpeg" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500" alt="Service Requests Desktop Panel" onclick="openLightbox(this.src, 'Desktop Panel - Service Requests List')">
+                            </div>
+                            <div class="relative bg-slate-800 rounded-b-2xl h-[10px] w-[110%] -left-[5%] shadow-md"></div>
+                            <div class="relative bg-slate-900 rounded-b-xl h-[4px] w-[20%] mx-auto"></div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <h3 class="font-bold text-lg text-white">Service Requests Management</h3>
+                            <p class="text-slate-400 text-sm mt-1">Manage, dispatch work orders, and monitor completion of resident complaints.</p>
+                        </div>
+                    </div>
+
+                    <!-- LAPTOP 2: community-voting-desktop.jpeg -->
+                    <div class="space-y-4">
+                        <div class="relative group cursor-zoom-in">
+                            <!-- Laptop Frame Mockup -->
+                            <div class="relative border-slate-800 bg-slate-900 border-[8px] rounded-t-2xl shadow-xl overflow-hidden aspect-[16/10] w-full">
+                                <img src="community-voting-desktop.jpeg" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500" alt="Community Voting Desktop Panel" onclick="openLightbox(this.src, 'Desktop Panel - Community Voting & Polls')">
+                            </div>
+                            <div class="relative bg-slate-800 rounded-b-2xl h-[10px] w-[110%] -left-[5%] shadow-md"></div>
+                            <div class="relative bg-slate-900 rounded-b-xl h-[4px] w-[20%] mx-auto"></div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <h3 class="font-bold text-lg text-white">Community Voting Panel</h3>
+                            <p class="text-slate-400 text-sm mt-1">Create polls, configure quorum rules, and monitor incoming vote percentages in real-time.</p>
+                        </div>
+                    </div>
+
+                    <!-- LAPTOP 3: community-voting=test-desktop.jpeg -->
+                    <div class="space-y-4">
+                        <div class="relative group cursor-zoom-in">
+                            <!-- Laptop Frame Mockup -->
+                            <div class="relative border-slate-800 bg-slate-900 border-[8px] rounded-t-2xl shadow-xl overflow-hidden aspect-[16/10] w-full">
+                                <img src="community-voting=test-desktop.jpeg" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500" alt="Voting Validation Panel" onclick="openLightbox(this.src, 'Desktop Panel - Voting Test & Rules Setup')">
+                            </div>
+                            <div class="relative bg-slate-800 rounded-b-2xl h-[10px] w-[110%] -left-[5%] shadow-md"></div>
+                            <div class="relative bg-slate-900 rounded-b-xl h-[4px] w-[20%] mx-auto"></div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <h3 class="font-bold text-lg text-white">Voting Rules & Validation</h3>
+                            <p class="text-slate-400 text-sm mt-1">Customize voting regulations and parameters for community decisions.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 — MOBILE FIRST EXPERIENCE -->
+        <section id="mobile" class="py-20 border-t border-slate-900 bg-slate-950/40 relative">
+            <div class="absolute bottom-1/4 right-1/4 -z-10 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left: Dual Phone Mockups (dashboard-home1.jpeg & dashboard-home2.jpeg) -->
+                    <div class="lg:col-span-6 order-last lg:order-first flex justify-center gap-6 sm:gap-8">
+                        
+                        <!-- Phone 1 (dashboard-home1.jpeg) -->
+                        <div class="relative w-1/2 max-w-[210px] sm:max-w-[230px] animate-float group cursor-zoom-in">
+                            <div class="absolute -inset-1 bg-emerald-500/10 rounded-[2rem] blur-md opacity-50 group-hover:opacity-75 transition"></div>
+                            <div class="relative border-slate-900 bg-slate-900 border-[7px] rounded-[2rem] shadow-xl overflow-hidden aspect-[9/19] w-full">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-3 bg-slate-900 rounded-b-lg z-20"></div>
+                                <img src="dashboard-home1.jpeg" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500" alt="Mobile Dashboard Home" onclick="openLightbox(this.src, 'Resident Portal - Dashboard View')">
+                            </div>
+                        </div>
+
+                        <!-- Phone 2 (dashboard-home2.jpeg) -->
+                        <div class="relative w-1/2 max-w-[210px] sm:max-w-[230px] animate-float group cursor-zoom-in" style="animation-delay: 2s;">
+                            <div class="absolute -inset-1 bg-emerald-500/10 rounded-[2rem] blur-md opacity-50 group-hover:opacity-75 transition"></div>
+                            <div class="relative border-slate-900 bg-slate-900 border-[7px] rounded-[2rem] shadow-xl overflow-hidden aspect-[9/19] w-full">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-3 bg-slate-900 rounded-b-lg z-20"></div>
+                                <img src="dashboard-home2.jpeg" class="w-full h-full object-cover object-top hover:scale-105 transition duration-500" alt="Mobile Quick Actions" onclick="openLightbox(this.src, 'Resident Portal - Quick Actions View')">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Right: Mobile Feature Explanations -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                            Mobile Responsive
+                        </div>
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                            Built for Mobile Communities
+                        </h2>
+                        <p class="text-slate-400 text-lg leading-relaxed">
+                            A fully optimized web application for convenient resident access from anywhere.
+                        </p>
+                        
+                        <!-- Benefits Grid -->
+                        <div class="grid sm:grid-cols-2 gap-6 pt-4">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+                                    <i class="fas fa-check-circle"></i> Mobile Friendly
+                                </div>
+                                <p class="text-slate-400 text-sm">Designed to fit seamlessly on all smartphone screen sizes.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+                                    <i class="fas fa-check-circle"></i> Fast Resident Access
+                                </div>
+                                <p class="text-slate-400 text-sm">Ultra-fast load times for instant dues access and quick reporting.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+                                    <i class="fas fa-check-circle"></i> Community Communication
+                                </div>
+                                <p class="text-slate-400 text-sm">Important announcements and meeting invitations sent directly to resident devices.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-emerald-400 font-semibold">
+                                    <i class="fas fa-check-circle"></i> Works on Any Device
+                                </div>
+                                <p class="text-slate-400 text-sm">Fully compatible with Android, iOS, tablet, and PC browsers without installation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5B — USE CASES ("Perfect For:") -->
+        <section id="use-cases" class="py-20 border-t border-slate-900 bg-slate-950/20">
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                        Target Segments
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Perfect For:
+                    </h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        Find out if CommunityHub is built for your organization.
+                    </p>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                    
+                    <!-- 1. HOA -->
+                    <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/30 flex flex-col gap-4 text-center group">
+                        <div class="h-12 w-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base md:text-lg mb-1 group-hover:text-emerald-400 transition-colors">Homeowners Associations</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Automate dues collections, architectural reviews, and board elections online.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Residential Communities -->
+                    <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/30 flex flex-col gap-4 text-center group">
+                        <div class="h-12 w-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base md:text-lg mb-1 group-hover:text-emerald-400 transition-colors">Residential Communities</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Centralize neighborhood announcements, service requests, and activities.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Condominiums -->
+                    <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/30 flex flex-col gap-4 text-center group">
+                        <div class="h-12 w-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base md:text-lg mb-1 group-hover:text-emerald-400 transition-colors">Condominium Associations</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Streamline elevator bookings, package alerts, and repair logs.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Membership Orgs -->
+                    <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/30 flex flex-col gap-4 text-center group">
+                        <div class="h-12 w-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base md:text-lg mb-1 group-hover:text-emerald-400 transition-colors">Membership Organizations</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Manage member directories, upcoming events, and digital ballots.</p>
+                        </div>
+                    </div>
+
+                    <!-- 5. Community Centers -->
+                    <div class="bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/30 flex flex-col gap-4 text-center group">
+                        <div class="h-12 w-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-users-rectangle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base md:text-lg mb-1 group-hover:text-emerald-400 transition-colors">Community Centers</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Handle facility reservations, activity calendars, and feedback forms.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6 — FOUNDER SECTION -->
+        <section id="founder" class="py-24 border-t border-slate-900 bg-[#030712]">
+            <div class="max-w-5xl mx-auto px-5 md:px-8">
+                <div class="glass-card rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-[80px]"></div>
+                    
+                    <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center relative z-10">
+                        <!-- Profile Avatar -->
+                        <div class="flex-shrink-0 relative">
+                            <div class="absolute -inset-1.5 bg-gradient-to-tr from-emerald-500 to-teal-500 rounded-full blur opacity-40"></div>
+                            <img src="founder-photo.jpg" class="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-slate-900 shadow-2xl" alt="Mus'ab - Founder CommunityHub">
+                        </div>
+                        
+                        <!-- Explanation -->
+                        <div class="space-y-4 text-center md:text-left">
+                            <div class="text-emerald-400 text-xs font-semibold uppercase tracking-wider">Meet the Founder</div>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-white">Built by Mus'ab</h3>
+                            <p class="text-slate-300 text-base md:text-lg leading-relaxed italic">
+                                "CommunityHub was created to help community leaders simplify operations, improve communication, and manage community services through a modern digital platform."
+                            </p>
+                            <p class="text-slate-500 text-xs font-medium uppercase tracking-wider pt-2">
+                                Mus'ab — Creator & Lead Developer of CommunityHub
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7 — CALL TO ACTION (CTA) -->
+        <section id="cta" class="py-24 border-y border-slate-900 bg-[#050B14] relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none"></div>
+            
+            <div class="max-w-4xl mx-auto px-5 text-center relative z-10 space-y-8">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Ready to Modernize Your Community?
+                </h2>
+                <p class="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    Schedule a free discovery call and see how CommunityHub can simplify community management.
+                </p>
+
+                <!-- Need a custom solution -->
+                <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 max-w-2xl mx-auto space-y-2">
+                    <h3 class="font-bold text-white text-base md:text-lg">Need a custom solution for your community?</h3>
+                    <p class="text-slate-400 text-xs md:text-sm">Contact the founder directly for a free consultation and product walkthrough.</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-full text-base sm:text-lg font-bold shadow-xl shadow-emerald-950/20 transition-all duration-300 transform hover:scale-[1.03]">
+                        Book a Free Demo <i class="fas fa-calendar-alt ml-2"></i>
+                    </a>
+                    <a href="mailto:musabdigitalwork@gmail.com?subject=Inquiry%20About%20CommunityHub" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white px-8 py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-[1.03]">
+                        Contact Founder <i class="fas fa-paper-plane ml-2"></i>
+                    </a>
+                </div>
+                <div class="text-xs text-slate-500 flex items-center justify-center gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Free Consultation • Direct Discovery Call with the Founder
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7B — CONTACT & SUPPORT -->
+        <section id="contact" class="py-20 border-b border-slate-900 bg-[#030712]/50 relative overflow-hidden">
+            <!-- Glow background effects -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/25 text-teal-400 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+                        Get In Touch
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+                        Contact & Support
+                    </h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        Questions about CommunityHub? Reach out directly to the founder.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Email Card -->
+                    <div class="glass-card rounded-3xl p-8 border border-slate-800/80 hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between items-center text-center gap-6 group">
+                        <div class="h-16 w-16 rounded-2xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">Email</h3>
+                            <p class="text-slate-400 text-sm">Send your questions or request a proposal via email.</p>
+                            <a href="mailto:musabdigitalwork@gmail.com" class="block font-semibold text-teal-400 hover:text-teal-300 transition-colors text-base sm:text-lg">
+                                musabdigitalwork@gmail.com
+                            </a>
+                        </div>
+                        <a href="mailto:musabdigitalwork@gmail.com" class="w-full text-center bg-teal-600 hover:bg-teal-500 text-white py-3.5 rounded-full font-bold shadow-lg shadow-teal-950/20 transition-all duration-300 hover:shadow-teal-950/40">
+                            Send Email
+                        </a>
+                    </div>
+                    
+                    <!-- LinkedIn Card -->
+                    <div class="glass-card rounded-3xl p-8 border border-slate-800/80 hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between items-center text-center gap-6 group">
+                        <div class="h-16 w-16 rounded-2xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform duration-300">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-white">LinkedIn</h3>
+                            <p class="text-slate-400 text-sm">Connect with the founder directly on professional network.</p>
+                            <a href="https://linkedin.com/in/musab-communityhub" target="_blank" rel="noopener noreferrer" class="block font-semibold text-teal-400 hover:text-teal-300 transition-colors text-base sm:text-lg">
+                                linkedin.com/in/musab-communityhub
+                            </a>
+                        </div>
+                        <a href="https://linkedin.com/in/musab-communityhub" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white py-3.5 rounded-full font-bold shadow-lg transition-all duration-300">
+                            View LinkedIn Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8 — FOOTER -->
+        <footer class="bg-[#030712] pt-16 pb-12 border-t border-slate-950">
+            <div class="max-w-7xl mx-auto px-5 md:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10 items-start mb-12">
+                    
+                    <!-- Col 1: About -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2">
+                            <div class="h-8 w-8 bg-emerald-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-users text-white text-sm"></i>
+                            </div>
+                            <span class="font-bold text-xl text-white">CommunityHub</span>
+                        </div>
+                        <p class="text-slate-500 text-sm tracking-wide leading-relaxed">
+                            Connect residents, manage dues, and simplify housing management in one integrated app.
+                        </p>
+                    </div>
+                    
+                    <!-- Col 2: Core Features -->
+                    <div>
+                        <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Core Features</h4>
+                        <ul class="space-y-2.5 text-sm text-slate-500">
+                            <li><a href="#preview" class="hover:text-emerald-400 transition">Resident Portal</a></li>
+                            <li><a href="#admin" class="hover:text-emerald-400 transition">Admin Dashboard</a></li>
+                            <li><a href="#desktop" class="hover:text-emerald-400 transition">Service Requests</a></li>
+                            <li><a href="#mobile" class="hover:text-emerald-400 transition">Mobile Experience</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Col 3: Information -->
+                    <div>
+                        <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-4">Information</h4>
+                        <ul class="space-y-2.5 text-sm text-slate-500">
+                            <li><a href="#founder" class="hover:text-emerald-400 transition">About Founder</a></li>
+                            <li><a href="#contact" class="hover:text-emerald-400 transition">Book Demo</a></li>
+                            <li><a href="#contact" class="hover:text-emerald-400 transition">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 4: Contact -->
+                    <div class="space-y-4">
+                        <h4 class="font-semibold text-white text-sm uppercase tracking-wider mb-3">CONTACT</h4>
+                        <ul class="space-y-2.5 text-sm text-slate-500">
+                            <li class="flex items-center gap-2">
+                                <i class="fas fa-envelope text-slate-600 text-xs w-4"></i>
+                                <a href="mailto:musabdigitalwork@gmail.com" class="hover:text-emerald-400 transition">musabdigitalwork@gmail.com</a>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fab fa-linkedin text-slate-600 text-xs w-4"></i>
+                                <a href="https://linkedin.com/in/musab-communityhub" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition">linkedin.com/in/musab-communityhub</a>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fas fa-map-marker-alt text-slate-600 text-xs w-4"></i>
+                                <span class="text-slate-400">Global / Remote</span>
+                            </li>
+                            <li class="pt-1">
+                                <span class="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-[11px] font-semibold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Response within 24 hours
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                
+                <div class="border-t border-slate-900 pt-8 text-center text-xs text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        Designed for modern communities, powered by real, fully functional product screenshots.
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:underline">Privacy Policy</a>
+                        <a href="#" class="hover:underline">Terms & Conditions</a>
+                    </div>
+                </div>
+                
+                <div class="text-center text-[10px] text-slate-700 mt-4">
+                    © 2026 CommunityHub. All rights reserved.
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- LIGHTBOX MODAL (To Zoom Screenshot Images) -->
+    <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-slate-950/95 backdrop-blur-md flex-col items-center justify-center p-4 transition-all duration-300 opacity-0 cursor-pointer" onclick="closeLightbox()">
+        <!-- Close Button -->
+        <button class="absolute top-6 right-6 text-slate-400 hover:text-white transition bg-slate-900/80 border border-slate-800 hover:bg-slate-800 p-3.5 rounded-full text-xl leading-none shadow-lg" onclick="closeLightbox(); event.stopPropagation();">
+            <i class="fas fa-times"></i>
+        </button>
+        <!-- Lightbox Image Content -->
+        <div class="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center justify-center" onclick="event.stopPropagation();">
+            <img id="lightbox-img" src="" class="max-w-full max-h-[75vh] rounded-2xl shadow-2xl border border-slate-800 object-contain scale-95 transition-transform duration-300" alt="Full Screenshot Preview">
+            <!-- Caption -->
+            <p id="lightbox-caption" class="text-slate-300 text-sm mt-4 text-center font-medium bg-slate-900/90 border border-slate-800 px-5 py-2.5 rounded-full shadow-lg max-w-lg"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript Lightbox Functionality -->
+    <script>
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            
+            img.src = src;
+            captionText.textContent = caption || 'CommunityHub Detail Preview';
+            
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            
+            // Smooth fade-in and scale-up transition
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                img.classList.remove('scale-95');
+                img.classList.add('scale-100');
+            }, 20);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            
+            lightbox.classList.add('opacity-0');
+            img.classList.remove('scale-100');
+            img.classList.add('scale-95');
+            
+            // Re-hide after transition completes
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+            }, 300);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
